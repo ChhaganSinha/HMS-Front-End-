@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../Styles/HospitalProfile.css"; // Ensure to create and link your CSS file
+import ContactModal from "./ContactModal";
 
 
 
@@ -16,6 +17,9 @@ L.Icon.Default.mergeOptions({
 
 
 const HospitalProfileModal = ({ HospitalInfo, CloseHospitalProfile }) => {
+  const [Contactmodal,setContactmodal] = useState(false)
+  //   console.log("modal is opened");
+  
   const points = [
     {
       lat: 51.505,
@@ -37,6 +41,11 @@ const HospitalProfileModal = ({ HospitalInfo, CloseHospitalProfile }) => {
     // },
   ];
 
+  const handelContactModal = () =>{
+    setContactmodal(false)
+  }
+
+
   return (
     <div className="modal-background">
       <div className="modal-container">
@@ -50,7 +59,7 @@ const HospitalProfileModal = ({ HospitalInfo, CloseHospitalProfile }) => {
           <img
             src={require("../Assets/icons8-close-window.gif")}
             alt="closemodalIcon"
-            className="btn-close"
+            // className="btn-close"
             style={{position:"absolute",top:"2%",right:"1%",width:"3%",height:"5%"}}
             onClick={CloseHospitalProfile}
           />
@@ -72,7 +81,7 @@ const HospitalProfileModal = ({ HospitalInfo, CloseHospitalProfile }) => {
               <p className="hospital-location">{HospitalInfo.location}</p>
             </div>
             <div className="ht-ContactbtnSection">
-              <button className="contact-btn">CONTACT HOSPITAL</button>
+              <button className="contact-btn" onClick={()=>setContactmodal(true)}>CONTACT HOSPITAL</button>
             </div>
           </div>
           <hr className="separator" />
@@ -190,6 +199,12 @@ const HospitalProfileModal = ({ HospitalInfo, CloseHospitalProfile }) => {
           </button>
         </div>
       </div>
+      {Contactmodal && (
+        <ContactModal
+        HospitalInfo={HospitalInfo} 
+        ContactModal={handelContactModal}
+        />
+      )}
     </div>
   );
 };
