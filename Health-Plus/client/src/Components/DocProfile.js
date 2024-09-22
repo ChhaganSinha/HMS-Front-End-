@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import ContactModal from "./ContactModal";
 
 const DocProfile = (props) => {
+  const [Contactmodal,setContactmodal] = useState(false)
   //   console.log("modal is opened");
+  
+
+  const handelContactModal = () =>{
+    setContactmodal(false)
+  }
 
   return (
     <div
@@ -168,6 +175,7 @@ const DocProfile = (props) => {
                     fontSize: "16px",
                     width: "100%",
                   }}
+                  onClick={()=>setContactmodal(true)}
                 >
                   CONTACT DOCTOR
                 </button>
@@ -327,6 +335,12 @@ const DocProfile = (props) => {
           </div>
         </div>
       </div>
+      {Contactmodal && (
+        <ContactModal
+        DocDetails="Dr. Salena Doe" 
+        ContactModal={handelContactModal}
+        />
+      )}
     </div>
   );
 };

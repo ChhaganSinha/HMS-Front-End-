@@ -1,95 +1,155 @@
-.form-container {
-    padding: 32px;
+.modal-Appointmentoverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    z-index: 7;
+  }
+  
+  .modal-Appointmentcontainer {
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    width: 65%;
+    /* max-width: 600px; */
+    position: relative;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  .close-Appointmenticon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .appointment-form-section {
+    text-align: center;
+    color: #333;
+  }
+  
+  .form-Appointmenttitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #9d2553;
+    margin-bottom: 3%;
+  }
+  
+  .form-Appointmentcontent {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    background: linear-gradient(to right, #ECF2FF, #FBFCFF);
-}
-.form-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 32px;
-    font-weight: bold;
-}
-.form-title > span {
-    position: relative;
-}
-.form-title span::before {
-    content: '';
-    position: absolute;
-    width: 75%;
-    height: 4px;
-    background-color: #9D2553;
-    border-radius: 8px;
-    left: 0;
-    bottom: -12px;
-}
-/* Form */
-.form-content label {
-    margin: 0 0 16px 0;
-    display: block;
-    font-family: 'Rubik', sans-serif;
-    font-size: 24px;
-    letter-spacing: .7px;
-}
-.form-content label::before {
-    content: "*";
-    color: red;
-    padding: 0 4px 0 0;
-}
-.form-content label :is(input, select) {
+    gap: 20px;
+  }
+  .AppoinmentInputForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     width: 100%;
-    margin: 8px 0;
-    padding: 0 12px;
-    display: block;
-    height: 40px;
-    color: black;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    background-color: #c9def4;
-    outline: transparent;
-    font-family: 'Rubik', sans-serif;
-    font-size: 18px;
-    letter-spacing: .7px;
-}
-/* Success Message */
-.success-message {
-    margin: 20px 0 0 0;
-    color: green;
-    font-family: 'Rubik', sans-serif;
-    font-size: 22px;
-    letter-spacing: .7px;
-    line-height: 1.7rem;
-}
-/* Error Message */
-.error-message {
+    /* border: 1px solid black; */
+  }
+  
+  label {
+    font-size: 1rem;
+    width: 20%;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .AppointmentInputcontainer{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+  /* .AppointmentInput{
+    margin-left: 3%;
+  } */
+  input:focus,
+  select:focus {
+    border-color: #9d2553;
+  }
+  
+  .Appointment-btn {
+    background-color: #9d2553;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Appointment-btn:hover {
+    background-color: #8b1f4c;
+  }
+  
+  .error-message {
     color: red;
-    font-family: 'Rubik', sans-serif;
-    font-size: 16px;
-    letter-spacing: .7px;
-    line-height: 1.7rem;
-}
-/* Responsive */
-@media screen and (max-width: 600px) {
-    .form-container {
-        padding: 24px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 0 !important;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .modal-container {
+      width: 95%;
+      padding: 20px;
+    }
+  
     .form-title {
-        font-size: 24px;
+      font-size: 1.3rem;
     }
-    .form-content label {
-        font-size: 18px;
+  
+    .text-appointment-btn {
+      font-size: 1rem;
     }
-    .form-content label :is(input, select) {
-        font-size: 16px;
-    }
-    .success-message {
-        margin: 12px 0 0 0;
-        font-size: 18px;
-    }
-
-    .appointmentForm-logo {
-        width: 40px; 
-        height: auto; 
-        margin-right: 12px;
-    }
-}
+  }
+  

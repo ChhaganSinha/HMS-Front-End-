@@ -92,7 +92,7 @@ function Footer() {
       </div>
 
       <div className="ft-copyright">
-        <p>© 2024-2025 Hospital Guru. All rights reserved.</p>
+        <p style={{color:"white"}}>© 2024-2025 Hospital Guru. All rights reserved.</p>
 
         <ul className="ft-social-links">
           <li>
